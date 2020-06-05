@@ -1,8 +1,5 @@
 # Projeto-IoT área da saúde
-Este é um projeto onde será desenvolvido um sistema para listagem de presença de alunos da universidade FACISABH.
 
-
-# Proposta do Projeto
 Este projeto que aborda o tema da saúde e sua finalidade e fazer o controle e gerenciamento prestados a paciente em um hospital.
 Através deste sistema os médicos, enfermeiro ou qualquer outro profissional da saúde que tenha acesso ao mesmo terá disponibilizado facilmente todos os registros e atendimentos prestados a pacientes. 
 ## 1 – Criar um aplicativo para gerenciamento dos atendimentos prestados aos pacientes á nível de enfermeiros e médicos:
@@ -23,7 +20,7 @@ Observações sobre o paciente
 
 Este será a funcionalidade principal do projeto que através dela apresentará todos os dados acima.
 ## 2 – Criar um novo tipo de bracelete para atendimento a paciente que terá um QR Cod.
-###Funcionalidade:
+### Funcionalidade:
 •	QR Cod
 Possibilitar a apresentação dos dados registrados para o paciente através do leitor de QR Cod do aplicativo.
 
