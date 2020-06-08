@@ -1,4 +1,4 @@
-# Projeto - licativo para Área da Saúde
+# Projeto - aplicativo para Área da Saúde
 
 * Foi desenvolvido um aplicativo pelos autores Davi Mezes, Amilton Junio, Gabriel Oliveira, Igor Oliveira e Isaque Paixão no primeiro semestre de 2020 para leitura de qrcode presente nas pulseiras dos pacientes e tivemos como inspiração o tema IoT na área da saúde do projeto ASPI da FACISABH.
 
