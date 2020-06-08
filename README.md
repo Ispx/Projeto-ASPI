@@ -3,7 +3,7 @@
 Este projeto que aborda o tema da saúde e sua finalidade e fazer o controle e gerenciamento prestados a paciente em um hospital.
 Através deste sistema os médicos, enfermeiro ou qualquer outro profissional da saúde que tenha acesso ao mesmo terá disponibilizado facilmente todos os registros e atendimentos prestados a pacientes. 
 ## 1 – Criar um aplicativo para gerenciamento dos atendimentos prestados aos pacientes á nível de enfermeiros e médicos:
-###Funcionalidades:
+### Funcionalidades:
 •	Nível de prioridade
 Informará a prioridade do paciente.
 
