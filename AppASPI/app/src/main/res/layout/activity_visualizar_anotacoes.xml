@@ -112,6 +112,7 @@
                 android:textSize="22dp"
                 />
             <ListView
+                android:id="@+id/alert_list_encotnrase"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:choiceMode="multipleChoice"
@@ -126,6 +127,7 @@
                 />
 
             <ListView
+                android:id="@+id/alert_list_medicacao"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:choiceMode="multipleChoice"

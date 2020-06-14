@@ -1,8 +1,9 @@
 package com.example.appaspi.basededados;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Funcionario {
+public class Funcionario implements Serializable {
     private int matricula;
     private Cargos cargo;
     private String nome;

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             //capturou algo
             idPaciente = Integer.parseInt(result.getContents());
 
-            startActivity(new Intent(MainActivity.this, AtendimentoRecycleView.class)); //Migrando para AtendimentosActivity
+            startActivity(new Intent(MainActivity.this, Lista_de_Atendimentos_Activity.class)); //Migrando para AtendimentosActivity
         }
         else {
 

@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".AtendimentoListView"/>
-        <activity android:name=".AtendimentoRecycleView"/>
-        <activity android:name=".FormularioActivity"/>
+        <activity android:name=".Lista_de_Atendimentos_Activity"/>
+        <activity android:name=".Fazer_Anotacoes_Activity"/>
+        <activity android:name=".Visualizar_Anotacoes_Activity"/>
     </application>
 </manifest>

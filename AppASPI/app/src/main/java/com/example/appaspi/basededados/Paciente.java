@@ -1,8 +1,9 @@
 package com.example.appaspi.basededados;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Paciente {
+public class Paciente implements Serializable {
     private int id;
     private String nome;
     private List<Atendimento> atendimentos;
@@ -35,9 +36,6 @@ public class Paciente {
         this.nome = nome;
     }
 
-    public void setAtendimentos(List<Atendimento> atendimentos) {
-        this.atendimentos = atendimentos;
-    }
 
     public void setId(int id) {
         this.id = id;

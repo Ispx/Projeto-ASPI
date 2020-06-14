@@ -1,15 +1,13 @@
 package com.example.appaspi;
 
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,58 +22,82 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appaspi.basededados.Atendimento;
 import com.example.appaspi.basededados.ListaAtendimento;
+
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RequiresApi(api = Build.VERSION_CODES.P)
-public class AtendimentoRecycleView extends AppCompatActivity implements AtendimentoAdapter.RecycleViewOnClickListener {
+public class Lista_de_Atendimentos_Activity extends AppCompatActivity implements Lista_de_Atendimentos_Adapter.RecycleViewOnClickListener {
     private EditText editText;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter recycleAdapter;
     private RecyclerView.LayoutManager recycleManager;
-    private ListaAtendimento listaAtendimento = new ListaAtendimento();
+
+
+    public static ListaAtendimento listaAtendimento = new ListaAtendimento();
+    public static int matricula;
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_atendimento_recycle);
+        setContentView(R.layout.activity_lista_de_atendimentos);
         setTitle("Histório de Atendimentos");
 
         editText = findViewById(R.id.alert_informacoes_edittext_observacao);
 
-        // setOnClickListener();
+        //Carregando view RecyclerView
         recyclerView = findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
         recycleManager = new LinearLayoutManager(this);
 
         //Valores do parâmetros: Objeto do tipo Atendimento e o contexto da classe ao objeto da interface.
-        recycleAdapter = new AtendimentoAdapter(listaAtendimento.getAtendimentoId(002),this);
+        recycleAdapter = new Lista_de_Atendimentos_Adapter(listaAtendimento.getAtendimentoId(002),this);
         recyclerView.setLayoutManager(recycleManager);
         recyclerView.setAdapter(recycleAdapter);
 
-        Button addAtendimento = findViewById(R.id.addatendimento); //Instanciação do botão de adicionar um novo atendimento
-        addAtendimento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        //Capturando dados enviados do LoginActivity, que no caso é o login do profissional
+        Intent capturarIntent = getIntent();
+        Bundle capturandoExtras = capturarIntent.getExtras();
+        matricula = 1234;
 
-                startActivity(new Intent(AtendimentoRecycleView.this, FormularioActivity.class));
-            }
-        });
+    }
+
+    public void addAtendimento(View view){
+
+        //Evento de transferencia de activity ao clicar no botão
+        startActivity(new Intent(Lista_de_Atendimentos_Activity.this, Fazer_Anotacoes_Activity.class));
+
     }
 
     @Override
-    public void itemSelecionado(Atendimento atendimento,int posicao, View itemView) {
-        Toast.makeText(AtendimentoRecycleView.this,atendimento.getFuncionario().getNome() + ", Posição: " + posicao,Toast.LENGTH_LONG).show();
+    public void itemSelecionado(Atendimento atendimento, int posicao, View view) {
+
+        //Criando um objeto do tipo Intent para transferir dados para outra Activity através do método putExtra
+        Intent transferirDadosParaOutraActivity = new Intent(Lista_de_Atendimentos_Activity.this,Visualizar_Anotacoes_Activity.class);
+
+        //Determinado o nome da transação e dado a ser transferindo
+        transferirDadosParaOutraActivity.putExtra("atendimento",atendimento);
+
+        //Começando a transação
+        startActivity(transferirDadosParaOutraActivity);
+
     }
+
+
 }
 
-class AtendimentoAdapter extends RecyclerView.Adapter<AtendimentoAdapter.AtendimentoViewHolder> {
+class Lista_de_Atendimentos_Adapter extends RecyclerView.Adapter<Lista_de_Atendimentos_Adapter.AtendimentoViewHolder> {
     private List<Atendimento> listaAtendimento;
-    private RecycleViewOnClickListener listener;
+    RecycleViewOnClickListener listener;
 
-    public AtendimentoAdapter(List<Atendimento> listaAtendimento, RecycleViewOnClickListener listener) {
+    public Lista_de_Atendimentos_Adapter(List<Atendimento> listaAtendimento, RecycleViewOnClickListener listener) {
         this.listaAtendimento = listaAtendimento;
+        this.listener = listener;
     }
 
     @NonNull
@@ -97,6 +119,7 @@ class AtendimentoAdapter extends RecyclerView.Adapter<AtendimentoAdapter.Atendim
 
         Atendimento atendimento = this.listaAtendimento.get(position);
 
+        //Atribuindo valores as views da classe viewHolder
         holder.nome.setText(atendimento.getFuncionario().getNome());
         holder.funcao.setText(atendimento.getFuncionario().getCargo());
         holder.data.setText(atendimento.getData());
@@ -104,18 +127,20 @@ class AtendimentoAdapter extends RecyclerView.Adapter<AtendimentoAdapter.Atendim
 
     }
 
+    //Quantidade de elementos a ser listados
     @Override
     public int getItemCount() {
         return listaAtendimento.size();
     }
 
-    //Criando uma interface anônima para para capturar a o objeto, a posição e a view clicada.
+    //Criando uma interface para eventos de click e determinando os atributos que quero capturar após o click.
     public interface RecycleViewOnClickListener {
         void itemSelecionado(Atendimento objeto, int posicao, View view);
     }
 
     class AtendimentoViewHolder extends RecyclerView.ViewHolder{
-        //Atributos da classe
+
+        //As views serão atribuidas na classe ViewHolder
         protected TextView nome;
         protected TextView funcao;
         protected TextView data;
@@ -136,7 +161,8 @@ class AtendimentoAdapter extends RecyclerView.Adapter<AtendimentoAdapter.Atendim
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Carregando valores aos atributos dos parâmetros (objeto,posicao,view)
+
+                    //Carregando valores aos atributos dos parâmetros do método da interface de evento de clicks (objeto,posicao,view)
                     listener.itemSelecionado(listaAtendimento.get(getAdapterPosition()),getAdapterPosition(),itemView);
                 }
             });

@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -21,7 +23,8 @@ public class LoginActivity extends AppCompatActivity {
     static ListaFuncionarios funcionarios = new ListaFuncionarios();
     static ListaPaciente pacientes = new ListaPaciente();
     public static int matricula = 1234;
-
+    public EditText textMatricula;
+    public Button btlogin;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +32,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         setTitle("Acesso ao ASPI");
 
-        final Button btlogin = findViewById(R.id.btlogin);
-        final EditText textMatricula = findViewById(R.id.matriculalogin);
+        btlogin = findViewById(R.id.btlogin);
+        textMatricula = findViewById(R.id.matriculalogin);
 
-        final String matriculastr = textMatricula.getText().toString();
-       // this.matricula = Integer.parseInt(matriculastr);
+        Editable text = textMatricula.getText();
+        String matriculastr = text.toString();
+        this.matricula = 1234;
 
         btlogin.setOnClickListener(new View.OnClickListener() {
 
@@ -44,15 +48,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 //Validação do usuário
                 if(funcionarios.verifyFuncionario(matricula) == true){
-                    startActivity(new Intent(LoginActivity.this, AtendimentoRecycleView.class));
+
+                    Intent dados = new Intent(LoginActivity.this,Lista_de_Atendimentos_Activity.class);
+                    dados.putExtra("matricula",matricula);
+                    startActivity(dados);
                     finish();
                 }
                 else{
-
-                    //Tratamento de erro
-                    textMatricula.setHighlightColor(R.color.colorPrimary);
-                    textMatricula.setTextColor(R.color.colorPrimaryDark);
-
+                    Toast.makeText(LoginActivity.this,"Matricula não identificada",Toast.LENGTH_LONG).show();
                 }
             }
         });

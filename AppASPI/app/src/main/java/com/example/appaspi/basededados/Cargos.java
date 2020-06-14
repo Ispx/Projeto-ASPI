@@ -1,6 +1,8 @@
 package com.example.appaspi.basededados;
 
-public enum Cargos {
+import java.io.Serializable;
+
+public enum Cargos implements Serializable {
 
     Enfermeiro, Medico;
 }
