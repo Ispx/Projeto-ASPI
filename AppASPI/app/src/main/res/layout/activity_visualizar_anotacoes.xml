@@ -112,7 +112,7 @@
                 android:textSize="22dp"
                 />
             <ListView
-                android:id="@+id/alert_list_encotnrase"
+                android:id="@+id/visualizar_estado"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:choiceMode="multipleChoice"
@@ -127,7 +127,7 @@
                 />
 
             <ListView
-                android:id="@+id/alert_list_medicacao"
+                android:id="@+id/visualizar_medicacao"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:choiceMode="multipleChoice"
@@ -145,7 +145,7 @@
 
 
             <EditText
-                android:id="@+id/alert_informacoes_edittext_observacao"
+                android:id="@+id/visualizar_observacao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

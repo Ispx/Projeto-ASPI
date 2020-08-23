@@ -10,6 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:background="@drawable/bt"
         android:layout_margin="5dp"
@@ -159,7 +160,6 @@
             android:id="@+id/bt_add_observacao"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/borderbt"
             android:text="Salvar"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
