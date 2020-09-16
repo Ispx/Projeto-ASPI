@@ -2,16 +2,26 @@ package com.example.appaspi.models;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.RequiresApi;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.stream.Collectors;
 
 @RequiresApi(api = Build.VERSION_CODES.P)
 public class Atendimento  implements Parcelable
@@ -24,7 +34,7 @@ public class Atendimento  implements Parcelable
     private EditText observacao;
     private ListView listViewEncontrase;
     private ListView listaViewMedicamento;
-
+    private Intent intent;
     public Atendimento(Funcionario funcionarios, Paciente paciente, Date data) {
         super();
         this.funcionario = funcionarios;
@@ -32,7 +42,10 @@ public class Atendimento  implements Parcelable
         this.paciente = paciente;
     }
 
-
+    public Intent getIntent(){
+        return intent;
+    }
+    public void setIntent(Intent intent){this.intent = intent;}
     protected Atendimento(Parcel in) {
         funcionario = in.readParcelable(Funcionario.class.getClassLoader());
         paciente = in.readParcelable(Paciente.class.getClassLoader());
@@ -75,19 +88,31 @@ public class Atendimento  implements Parcelable
         return horaFormat.format(data);
       }
 
-     public ListView getListaViewMedicamento() { return listaViewMedicamento; }
+     public ListView getListaViewMedicamento() {
+        return listaViewMedicamento;
+    }
 
-    public ListView getListViewEncontrase() { return listViewEncontrase; }
+    public ListView getListViewEncontrase() { return this.listViewEncontrase; }
 
     public EditText getObservacao() {
         return observacao;
     }
 
-    public void setListaViewMedicamento(ListView listaViewMedicamento) { if(listaViewMedicamento != null){this.listaViewMedicamento = listaViewMedicamento;}; }
+    public void setListaViewMedicamento(ListView listaViewMedicamento) { if(listaViewMedicamento != null){
 
-    public void setListViewEncontrase(ListView listViewEncontrase) { if (listViewEncontrase != null ){this.listViewEncontrase = listViewEncontrase;}}
+        this.listaViewMedicamento = listaViewMedicamento;
+        }
+    }
+
+    public void setListViewEncontrase(ListView listViewEncontrase) { if (listViewEncontrase != null ){
+        this.listViewEncontrase = listViewEncontrase;
+    }}
 
     public void setObservacao(EditText observacao) {
         this.observacao = observacao;
     }
+
+
 }
+
+

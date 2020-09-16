@@ -39,7 +39,7 @@ public class Fazer_Anotacoes_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_fazer_anotacoes);
-
+        setTitle("Preencher do Formulário");
         observacao = findViewById(R.id.editText_observacao);
         listViewEncontrase = findViewById(R.id.list_encontrase);
         listaViewMedicamento = findViewById(R.id.list_medicamento);

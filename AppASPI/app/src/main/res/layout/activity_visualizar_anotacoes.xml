@@ -54,7 +54,7 @@
                         android:layout_marginLeft="6dp"
                         />
                     <TextView
-                        android:id="@+id/alert_informacoes_input_nome_do_paciente"
+                        android:id="@+id/visualizar_informacoes_input_nome_do_paciente"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/alert_informacoes_nome_do_paciente"
@@ -73,7 +73,7 @@
                         android:layout_marginLeft="6dp"
                         />
                     <TextView
-                        android:id="@+id/alert_informacoes_input_idade_paciente"
+                        android:id="@+id/visualizar_informacoes_input_idade_paciente"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/alert_informacoes_idade_paciente"
@@ -92,7 +92,7 @@
                         android:layout_marginLeft="6dp"
                         />
                     <TextView
-                        android:id="@+id/alert_informacoes_input_classificacao_atendimento"
+                        android:id="@+id/visualizar_informacoes_input_classificacao_atendimento"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/alert_informacoes_classificacao_atendimento"

@@ -28,19 +28,18 @@ import java.util.List;
 @RequiresApi(api = Build.VERSION_CODES.P)
 public class Lista_de_Atendimentos_Activity extends AppCompatActivity implements Lista_de_Atendimentos_Adapter.RecycleViewOnClickListener {
     public static ListaAtendimento listaAtendimento = new ListaAtendimento();
-
     private EditText editText;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter recycleAdapter;
     private RecyclerView.LayoutManager recycleManager;
     public static int matricula;
-
+    public  static int posicao;
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_de_atendimentos);
-        getSupportActionBar().setTitle("Listagem de atendimentos");
+        getSupportActionBar().setTitle("Lista de Formulários");
 
         //Capturando dados enviados do LoginActivity, que no caso é o login do profissional
         Intent capturarIntent = getIntent();
@@ -74,9 +73,14 @@ public class Lista_de_Atendimentos_Activity extends AppCompatActivity implements
 
     @Override
     public void itemSelecionado(Atendimento atendimento, int posicao, View view) {
-        Intent intent = new Intent(Lista_de_Atendimentos_Activity.this, Visualizar_Anotacoes_Activity.class);
+        Intent intent = new Intent();
         intent.putExtra("atendimento",atendimento);
-        startActivity(intent);
+        //pegando lista de atendimento de um paciente
+        //pegando um atendimento de acordo com sua posição
+        //setando uma intent dentro deste atendimento
+        listaAtendimento.getAtendimentoId(002).get(posicao).setIntent(intent);
+        Lista_de_Atendimentos_Activity.posicao = posicao;
+        startActivity(new Intent(Lista_de_Atendimentos_Activity.this,Visualizar_Anotacoes_Activity.class));
     }
 
 }
